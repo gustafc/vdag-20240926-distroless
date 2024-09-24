@@ -1,3 +1,7 @@
 .dockerignore
 .gitignore
 Dockerfile
+
+# Insert .gitignore below
+/hello-app-container
+/target
