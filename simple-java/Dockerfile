@@ -9,7 +9,7 @@ RUN --mount=type=cache,id=m2-repo,target=/root/.m2/repository \
 
 FROM gcr.io/distroless/java21-debian12@sha256:cf7fce959603124dcc412bc2d245d84a4e0d86c4c02c6eae2cf13e973c246f24 AS hello-app
 USER 10001
-COPY --link --from=builder --chown=10001:10001 --chmod=500 /app/hello.jar /hello.jar
+COPY --link --from=builder --chown=0:0 --chmod=444 /app/hello.jar /hello.jar
 ENTRYPOINT ["java", "-jar", "/hello.jar"]
 
 

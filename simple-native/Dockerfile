@@ -8,7 +8,7 @@ RUN gcc -static hello.c -o hello
 
 FROM scratch AS hello-app
 USER 10001
-COPY --link --from=builder --chown=10001:10001 --chmod=500 /app/hello /hello
+COPY --link --from=builder --chown=0:0 --chmod=555 /app/hello /hello
 ENTRYPOINT ["/hello"]
 
 # docker build --target=hello-app . 2>&1 | tee /dev/tty | grep "writing image" | tail -n1 | egrep -o 'sha256:[0-9a-f]+' | cut -d: -f2 | xargs docker run --rm
